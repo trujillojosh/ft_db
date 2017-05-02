@@ -1,2 +1,0 @@
-- implement hash table
-- make data structure with 2d array
