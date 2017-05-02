@@ -13,7 +13,7 @@
 NAME = ft_db
 INC = -I ft_db.h
 FLAGS = gcc
-SRCS = ft_lstnew.c ft_lstsize.c ft_main.c ft_print_list.c create_db.c ft_itoa.c ft_int_len.c
+SRCS = ft_lstnew.c ft_lstsize.c main.c ft_print_list.c create_db.c ft_itoa.c ft_int_len.c user_new.c ft_strjoin.c save_db.c
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 00:46:11 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/04/28 02:29:25 by jtrujill         ###   ########.fr       */
+/*   Updated: 2017/05/01 22:24:07 by jtrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,12 @@ int		ft_lstsize(t_list *lst);
 char	***create_db(int size, t_list *attr);
 char	*ft_itoa(int n);
 int		ft_int_len(int nb);
+char	***user_populate(int size, t_list *attr);
+char	*fill_data(char *content);
+int		another_entry(void);
+int 	get_option(void);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*new_filename(char *str);
+void	save_db(t_list *attr, char ***data);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   user_new.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/28 01:25:43 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/04/28 02:28:45 by jtrujill         ###   ########.fr       */
+/*   Created: 2017/05/01 22:22:26 by jtrujill          #+#    #+#             */
+/*   Updated: 2017/05/01 22:22:33 by jtrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_list	*get_attr(void) //gets initial attributes from user
 	return (head);
 }
 
-int 	another_entry() //if user would like to make another entry
+int 	another_entry(void) //if user would like to make another entry
 {
 	char	str[50];
 
@@ -79,7 +79,7 @@ char	***user_populate(int size, t_list *attr) //allows user to create new data i
 	id = 0;
 	i = 1;
 	data = create_db(size, attr);
-	printf("\n%s\n", "Now let's move on the the first entry");
+	printf("\n%s\n", "Now let's move on the the first entry.");
 	while (1)
 	{
 		head = attr;
@@ -97,14 +97,4 @@ char	***user_populate(int size, t_list *attr) //allows user to create new data i
 		id++;
 	}
 	return (data);
-}
-
-int		main(void)
-{
-	static char	***data;
-	t_list	*attr;
-
-	attr = get_attr();
-	data = user_populate(ft_lstsize(attr), attr);
-	return (0);
 }
