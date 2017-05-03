@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/09 21:55:01 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/03/14 21:24:58 by jtrujill         ###   ########.fr       */
+/*   Created: 2016/11/28 18:16:08 by jtrujill          #+#    #+#             */
+/*   Updated: 2016/11/28 18:17:09 by jtrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_db.h"
+#include "includes/libft.h"
 
-int			ft_lstsize(t_list *lst)
+char	*ft_strncpy(char *s1, const char *s2, size_t nb)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
-	while (lst)
+	while (i < nb)
 	{
+		if (*s2)
+		{
+			s1[i] = *s2;
+			s2++;
+		}
+		else
+			s1[i] = '\0';
 		i++;
-		lst = lst->next;
 	}
-	return (i);
+	return (s1);
 }

@@ -13,17 +13,20 @@
 NAME = ft_db
 INC = -I ft_db.h
 FLAGS = gcc
-SRCS = ft_lstnew.c ft_lstsize.c main.c ft_print_list.c create_db.c ft_itoa.c ft_int_len.c user_new.c ft_strjoin.c save_db.c
+SRCS = main.c ft_print_list.c create_db.c user_new.c save_db.c load_db.c
 
 all: $(NAME)
 
 $(NAME):
-	$(FLAGS) $(INC) -o $(NAME) $(SRCS) -g
+	make -C libft
+	$(FLAGS) $(INC) -o $(NAME) $(SRCS) -L libft/ -lft -g
 
 clean:
+	make clean -C libft
 	rm -rf ft_db.dSYM
 
 fclean: clean
+	make fclean -C libft
 	rm -rf $(NAME)
 
 re: fclean all

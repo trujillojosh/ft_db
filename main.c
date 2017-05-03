@@ -52,10 +52,12 @@ int		main(void)
 	if (opt == 1) //create new db
 	{
 		attr = get_attr();
-		data = user_populate(ft_lstsize(attr), attr);
+		data = user_populate(ft_lstsize(attr), attr); 
 	}
 	else if (opt == 2)//access an existing one
 	{
+		attr = curr_saves();
+		save_options(attr);
 		return (0);
 	}
 	else

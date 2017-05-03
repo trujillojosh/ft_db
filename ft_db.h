@@ -17,13 +17,15 @@
 # include <stdlib.h>
 # include <string.h>
 # include <ctype.h>
-
-typedef struct s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
+# include "libft/includes/libft.h"
+# include <sys/types.h>
+# include <dirent.h>
+// typedef struct s_list
+// {
+// 	void			*content;
+// 	size_t			content_size;
+// 	struct s_list	*next;
+// }					t_list;
 
 typedef struct	s_entry
 {
@@ -47,5 +49,7 @@ int 	get_option(void);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*new_filename(char *str);
 void	save_db(t_list *attr, char ***data);
+t_list	*curr_saves(void);
+void	save_options(t_list *save);
 
 #endif
