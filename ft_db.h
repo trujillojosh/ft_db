@@ -50,6 +50,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*new_filename(char *str);
 void	save_db(t_list *attr, char ***data);
 t_list	*curr_saves(void);
-void	save_options(t_list *save);
+char	*save_options(t_list *save);
+void	read_csv(char *save);
 
 #endif

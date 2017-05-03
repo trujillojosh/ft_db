@@ -108,5 +108,6 @@ int					ft_int_len_ext(int nb, int base);
 char				*ft_uitoa_base(unsigned int value, int base);
 int					ft_uint_len_ext(unsigned int nb, int base);
 void				ft_str_replace(char **old, char *new);
+size_t				ft_wdlen(char const *s, char c);
 
 #endif

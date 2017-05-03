@@ -57,7 +57,10 @@ int		main(void)
 	else if (opt == 2)//access an existing one
 	{
 		attr = curr_saves();
-		save_options(attr);
+		read_csv(save_options(attr));
+		// printf("\n%s", save_options(attr));
+		// data = read_csv(save_options(attr));
+		// printf("\noption is --> %s", save_options(attr));
 		return (0);
 	}
 	else
