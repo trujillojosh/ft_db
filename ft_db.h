@@ -52,5 +52,5 @@ void	save_db(t_list *attr, char ***data);
 t_list	*curr_saves(void);
 char	*save_options(t_list *save);
 void	read_csv(char *save);
-
+void	print_entry(int i, char ***data, t_list *attr);
 #endif

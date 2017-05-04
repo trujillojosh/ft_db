@@ -52,7 +52,8 @@ int		main(void)
 	if (opt == 1) //create new db
 	{
 		attr = get_attr();
-		data = user_populate(ft_lstsize(attr), attr); 
+		data = user_populate(ft_lstsize(attr), attr);
+		print_entry(1, data, attr);
 	}
 	else if (opt == 2)//access an existing one
 	{

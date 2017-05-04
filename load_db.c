@@ -45,6 +45,7 @@ char	*save_options(t_list *save)
 {
 	int		i;
 	char	*tmp;
+	char	*tmp2;
 	char	input[100];
 
 	i = 0;
@@ -64,7 +65,9 @@ char	*save_options(t_list *save)
 	fgets(input, sizeof(input), stdin);
 	if (input[strlen(input) - 1] == '\n')
 		input[strlen(input) - 1] = '\0';
-	tmp = ft_strjoin(input, ".txt");
+	tmp2 = ft_strjoin("saves/", input);
+	tmp = ft_strjoin(tmp2, ".txt");
+	free(tmp2);
 	return (tmp);
 }
 
@@ -82,10 +85,10 @@ t_list	*read_attr(FILE *fp)
 	int		i;
 
 	i = 0;
-	get_next_line((int)fp, &line); //this shit is causing the hang
+	get_next_line(fileno(fp), &line);
 	head = ft_lstnew(line, strlen(line));
 	curr = head;
-	while (line != NULL)
+	while (*line != '\0')
 	{
 		if (*line == ',')
 			line++;
@@ -95,13 +98,12 @@ t_list	*read_attr(FILE *fp)
 		curr->next = ft_lstnew(tmp, strlen(tmp));
 		curr = curr->next;
 		free(tmp);
-		while ((*line != ',') && (*line))
+		while ((*line != ',') && (*line != '\0'))
 			line++;
 	}
 	head = head->next;
 	return (head);
 }
-
 // char	***read_csv(char *save)
 // {
 // 	char	***data;
@@ -120,7 +122,11 @@ void	read_csv(char *save)
 	t_list	*attr;
 	FILE	*fp;
 
-	fp = fopen(save, "r+");
+	printf("\nsave is --> %s", save);
+	fp = fopen(save, "r");
+	if (fp == NULL)
+		printf("\nerror, fp is bad");
+	printf("%c", '\n');
 	attr = read_attr(fp);
 	fclose(fp);
 	ft_print_list(attr);
