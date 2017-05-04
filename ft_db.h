@@ -20,19 +20,6 @@
 # include "libft/includes/libft.h"
 # include <sys/types.h>
 # include <dirent.h>
-// typedef struct s_list
-// {
-// 	void			*content;
-// 	size_t			content_size;
-// 	struct s_list	*next;
-// }					t_list;
-
-typedef struct	s_entry
-{
-	int 			hash;
-	char 			**data;
-
-}					t_entry;
 
 t_list	*ft_lstnew(void const *content, size_t content_size);
 void	ft_print_list(t_list *lst);

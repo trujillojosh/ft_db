@@ -14,30 +14,30 @@
 
 int		get_option(void)
 {
-	char	opt[25];
+	char	*opt;
 	int		i;
 
 	i = 0;
-	memset(opt, '\0', sizeof(opt));
 	printf("\n%s", "Please choose one of the following options, then press enter");
 	printf("\n%s", "[1] Create a new database");
 	printf("\n%s", "[2] Load an existing one\n");
-	fgets(opt, sizeof(opt), stdin);
+	get_next_line(0, &opt);
 	i = atoi(opt);
+	free(opt);
 	return (i);
 }
 
 int		db_menu(void)
 {
-	char	opt[25];
+	char	*opt;
 	int		i;
 
 	i = 0;
-	memset(opt, '\0', sizeof(opt));
 	printf("\n%s", "Please choose one of the following options, then press enter");
 	printf("\n%s", "[1] New Entry\n[2] Search\n[3] Save\n[4] Quit\n");
-	fgets(opt, sizeof(opt), stdin);
+	get_next_line(0, &opt);
 	i = atoi(opt);
+	free(opt);
 	return (i);
 }
 

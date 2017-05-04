@@ -16,26 +16,23 @@ t_list	*get_attr(void) //gets initial attributes from user
 {
 	t_list	*head;
 	t_list	*curr;
-	char	str[50];
+	char	*str;
 	int 	i;
 
 	i = 0;
 	head = ft_lstnew("ID", 3);
 	curr = head;
-	memset(str, '\0', sizeof(str));
 	printf("\n%s\n", "Please enter each attribute name, followed by enter.");
-	printf("%s\n", "Once finished, simply type 'finished' followed by enter.");
+	printf("%s\n", "Once finished, press enter again or write 'finished'.");
 	while (1)
 	{
-		printf("\n%s", "Enter Attribute name: ");
-		fgets(str, sizeof(str), stdin);
-		if (str[strlen(str) - 1] == '\n')
-			str[strlen(str) - 1] = '\0';
-		if (strcmp(str, "finished") == 0)
+		printf("\n%s\n", "Enter Attribute name below:");
+		get_next_line(0, &str);
+		if ((strcmp(str, "finished") == 0) || (strlen(str) == 0))
 			break ;
 		curr->next = ft_lstnew(str, sizeof(str));
 		curr = curr->next;
-		memset(str, '\0', sizeof(str));
+		free(str);
 		i++;
 	}
 	return (head);
@@ -43,30 +40,27 @@ t_list	*get_attr(void) //gets initial attributes from user
 
 int 	another_entry(void) //if user would like to make another entry
 {
-	char	str[50];
+	char	*str;
 
-	memset(str, '\0', sizeof(str));
-	printf("\n%s", "Would you like to make another entry(yes/no): ");
-	fgets(str, sizeof(str), stdin);
-	if (str[strlen(str) - 1] == '\n')
-		str[strlen(str) - 1] = '\0';
+	printf("\n%s\n", "Would you like to make another entry(yes/no):");
+	get_next_line(0, &str);
 	if (str[0] == 'y')
+	{
+		free(str);
 		return (1);
+	}
+	free(str);
 	return (0);
 }
 
 char 	*fill_data(char *content) //fills each attribute based on user response
 {
-	char	str[1024];
+	char	*str;
 	char	*res;
 
-	memset(str, '\0', sizeof(str));
-	printf("\nPlease enter value for %s: ", content);
-	fgets(str, sizeof(str), stdin);
-	if (str[strlen(str) - 1] == '\n')
-		str[strlen(str) - 1] = '\0';
-	res = strdup(str);
-	return (res);
+	printf("\nPlease enter value for %s:\n", content);
+	get_next_line(0, &str);
+	return (str);
 }
 
 char	***user_populate(int size, t_list *attr) //allows user to create new data inside a new 3d array

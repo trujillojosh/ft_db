@@ -46,7 +46,7 @@ char	*save_options(t_list *save)
 	int		i;
 	char	*tmp;
 	char	*tmp2;
-	char	input[100];
+	char	*input;
 
 	i = 0;
 	printf("\n%s", "The following saves exist:");
@@ -61,20 +61,14 @@ char	*save_options(t_list *save)
 			}
 		save = save->next;
 	}
-	printf("\n\n%s", "Which database would you like to load: ");
-	fgets(input, sizeof(input), stdin);
-	if (input[strlen(input) - 1] == '\n')
-		input[strlen(input) - 1] = '\0';
+	printf("\n\n%s\n", "Which database would you like to load?");
+	get_next_line(0, &input);
 	tmp2 = ft_strjoin("saves/", input);
 	tmp = ft_strjoin(tmp2, ".txt");
 	free(tmp2);
+	free(input);
 	return (tmp);
 }
-
-// char	*read_entry(FILE *fp)
-// {
-// 	static	char	*str;
-// }
 
 t_list	*read_attr(FILE *fp, int mode) //take mode out, tomorrow
 {

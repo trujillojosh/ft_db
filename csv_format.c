@@ -12,7 +12,7 @@
 
 #include "ft_db.h"
 
-// char    *create_csv(char *str)
+// char    *std_csv(char *str)
 // {
 //     // size_t    i;
 //     // size_t    len;
@@ -86,34 +86,6 @@ char	*csv_std(char *str)
 	return (res);
 }
 
-// char    **split_csv(char *str)
-// {
-//     size_t    i;
-//     size_t    j;
-//     char    **temp;
-//     int        flag;
-
-//     i = 0;
-//     if (!(temp = (char**)malloc(sizeof(char*) * (strlen(str) + 1))))
-//         return (NULL);
-//     flag = 0;
-//     while (*str != '\0')
-//     {
-//         j = 0;
-//         while (*str++ != ',' && temp[i][j] != '\0')
-//         {
-//             if (*str == '\"')
-//                 str++;
-//             while (*str++ != '\"')
-//                 temp[i][j] = *str;
-//             temp[i][j] = *str;
-//         }
-//         temp[i][j] = '\0';
-//         i++;
-//     }
-//     return (temp);
-// }
-
 t_list	*split_csv(char *str)
 {
 	t_list *head;
@@ -172,22 +144,3 @@ t_list	*split_csv(char *str)
 	head = head->next;
 	return (head);
 }
-// int		main(void)
-// {
-// 	// printf("%s\n", create_csv("josh, trujillo"));
-// 	// printf("%s\n", csv_std("\"\"\"Blue Dog\"\", \"\"The Magician\"\"\""));
-//  //    printf("%s\n", csv_std("\"\"josh, trujillo\"\""));
-//  //    printf("%s\n", csv_std("\"\"Words and internal comma, test\"\""));
-//  //    printf("%s\n", csv_std("\"djfajsd;fnjasld;fnjalskdnfjsdf asdfs dfasd fasd f\""));
-//  //    printf("%s\n", csv_std("\"josh, trujillo\""));
-//  //    printf("%s\n", csv_std("\"\"josh, trujillo\"\""));
-//  //    printf("%s\n", csv_std("\"josh, trujillo\""));
-//  //    printf("%s\n", csv_std("Sally Whittaker,2018,McCarren House,312,3.75"));
-//  //    printf("%s\n", csv_std("josh, trujillo"));
-//  //    printf("%s\n", csv_std("\"josh, trujillo\""));
-//  //    printf("%s\n", csv_std("\"josh, trujillo\""));
-//  //    printf("%s\n", csv_std("\"josh, trujillo\""));
-//  //    printf("%s\n", csv_std("\"josh, trujillo\""));
-// 	ft_print_list(split_csv("17,Paloma,Convery,pconveryg@prnewswire.com,\"Fem,ale\",7.101.62.13\""));
-// 	return (0);
-// }

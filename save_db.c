@@ -60,19 +60,17 @@ void	save_data(FILE *fp, t_list *attr, char ***data)
 
 void	save_db(t_list *attr, char ***data)
 {
-	char	str[25];
+	char	*str;
 	char	*file;
 	FILE	*fp;
 
-	memset(str, '\0', sizeof(str));
 	printf("\n%s", "Warning, if save already exists it will be overwritten.");
-	printf("\n%s", "Please enter save name: ");
-	fgets(str, sizeof(str), stdin);
-	if (str[strlen(str) - 1] == '\n')
-		str[strlen(str) - 1] = '\0';
+	printf("\n%s\n", "Please enter save name below:");
+	get_next_line(0, &str);
 	file = new_filename(str);
 	fp = fopen(file, "w+");
 	save_data(fp, attr, data);
 	fclose(fp);
 	free(file);
+	free(str);
 }
