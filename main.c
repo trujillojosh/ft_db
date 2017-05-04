@@ -45,24 +45,27 @@ int		main(void)
 {
 	static char	***data;
 	t_list		*attr;
+	t_list		*help;
 	int			opt;
 	int			menu;
 
 	opt = get_option();
+	help = NULL;
 	if (opt == 1) //create new db
 	{
 		attr = get_attr();
 		data = user_populate(ft_lstsize(attr), attr);
-		print_entry(1, data, attr);
+		// print_entry(1, data, attr);
 	}
 	else if (opt == 2)//access an existing one
 	{
 		attr = curr_saves();
-		read_csv(save_options(attr));
+		data = read_csv(save_options(attr));
+		attr = read_attr(NULL, 1);
 		// printf("\n%s", save_options(attr));
 		// data = read_csv(save_options(attr));
 		// printf("\noption is --> %s", save_options(attr));
-		return (0);
+		// return (0);
 	}
 	else
 		return (-1);

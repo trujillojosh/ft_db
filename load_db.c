@@ -76,15 +76,17 @@ char	*save_options(t_list *save)
 // 	static	char	*str;
 // }
 
-t_list	*read_attr(FILE *fp)
+t_list	*read_attr(FILE *fp, int mode) //take mode out, tomorrow
 {
-	t_list	*head;
+	static t_list	*head;
 	t_list	*curr;
 	char	*line;
 	char	*tmp;
 	int		i;
 
 	i = 0;
+	if (mode == 1)
+		return (head);
 	get_next_line(fileno(fp), &line);
 	head = ft_lstnew(line, strlen(line));
 	curr = head;
@@ -104,30 +106,59 @@ t_list	*read_attr(FILE *fp)
 	head = head->next;
 	return (head);
 }
-// char	***read_csv(char *save)
-// {
-// 	char	***data;
-// 	t_list	*attr;
-// 	FILE	*fp;
-// 	int		i;
-// 	int		j;
 
-// 	i = 0;
-// 	j = 0;
-// 	fp = fopen(save, r+);
-// 	attr = read_attr(FILE *fp)
-
-void	read_csv(char *save)
+char	***file_data(FILE *fp, t_list *attr)
 {
+	char	***res;
+	t_list	*data;
+	char	*tmp;
+	int 	i;
+	int 	j;
+
+	i = 0;
+	j = 0;
+	res = create_db(ft_lstsize(attr), attr);
+	while (1)
+	{
+		i = 0;
+		if (!(get_next_line(fileno(fp), &tmp)))
+			break ;
+		data = split_csv(tmp);
+		free(tmp);
+		while (i < ft_lstsize(attr))
+		{
+			res[i][j] = csv_std(data->content);
+			data = data->next;
+			i++;
+		}
+		j++;
+	}
+	return(res);
+}
+char	***read_csv(char *save)
+{
+	char	***data;
 	t_list	*attr;
 	FILE	*fp;
 
-	printf("\nsave is --> %s", save);
 	fp = fopen(save, "r");
-	if (fp == NULL)
-		printf("\nerror, fp is bad");
-	printf("%c", '\n');
-	attr = read_attr(fp);
+	attr = read_attr(fp, 0);
+	data = file_data(fp, attr);
 	fclose(fp);
-	ft_print_list(attr);
+	return (data);
 }
+
+// void	read_csv(char *save)
+// {
+// 	t_list	*attr;
+// 	FILE	*fp;
+
+// 	printf("\nsave is --> %s", save);
+// 	fp = fopen(save, "r");
+// 	if (fp == NULL)
+// 		printf("\nerror, fp is bad");
+// 	printf("%c", '\n');
+// 	attr = read_attr(fp);
+// 	fclose(fp);
+// 	ft_print_list(attr);
+// }

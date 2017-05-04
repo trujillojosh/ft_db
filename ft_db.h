@@ -6,7 +6,7 @@
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 00:46:11 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/05/01 22:24:07 by jtrujill         ###   ########.fr       */
+/*   Updated: 2017/05/03 23:24:02 by jtrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ char	*new_filename(char *str);
 void	save_db(t_list *attr, char ***data);
 t_list	*curr_saves(void);
 char	*save_options(t_list *save);
-void	read_csv(char *save);
+char	***read_csv(char *save);
 void	print_entry(int i, char ***data, t_list *attr);
+char	*csv_std(char *str);
+t_list	*split_csv(char *str);
+t_list	*read_attr(FILE *fp, int mode);
 #endif
