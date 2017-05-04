@@ -56,7 +56,6 @@ int 	another_entry(void) //if user would like to make another entry
 char 	*fill_data(char *content) //fills each attribute based on user response
 {
 	char	*str;
-	char	*res;
 
 	printf("\nPlease enter value for %s:\n", content);
 	get_next_line(0, &str);
