@@ -82,7 +82,7 @@ int		main(void)
 		else if (menu == 2)
 		{
 			opt = search_db(attr, data);
-			printf("\noption is -> %d\n", opt);
+			data = manage_entry(attr, data, opt);
 		}
 		else if (menu == 3)
 			save_db(attr, data);

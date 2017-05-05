@@ -47,5 +47,9 @@ int 	search_db(t_list *attr, char ***data);
 void	print_entry_line(int choice, int j, char ***data, t_list *attr);
 int 	attr_option(t_list *attr);
 int 	make_selection(t_list *res, char ***data, t_list *attr);
+int 	attr_select(t_list *attr);
+char 	***delete_entry(t_list *attr, char ***data, int entry);
+char 	***modify_entry(t_list *attr, char ***data, int entry);
+char	***manage_entry(t_list *attr, char ***data, int entry);
 
 #endif
