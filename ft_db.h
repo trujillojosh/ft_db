@@ -43,4 +43,7 @@ void	print_entry(int i, char ***data, t_list *attr);
 char	*csv_std(char *str);
 t_list	*split_csv(char *str);
 t_list	*read_attr(FILE *fp, int mode);
+t_list 	*new_entry_field(t_list *attr, int id);
+char	***add_entry(t_list *attr, char ***data);
+
 #endif

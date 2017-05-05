@@ -80,7 +80,11 @@ t_list	*read_attr(FILE *fp, int mode) //take mode out, tomorrow
 
 	i = 0;
 	if (mode == 1)
-		return (head);
+	{
+		if (head != NULL)
+			return (head);
+		return (NULL);
+	}
 	get_next_line(fileno(fp), &line);
 	head = ft_lstnew(line, strlen(line));
 	curr = head;
