@@ -6,52 +6,50 @@
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 15:25:58 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/05/03 15:50:14 by jtrujill         ###   ########.fr       */
+/*   Updated: 2017/05/05 14:34:27 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_db.h"
 
-// char    *std_csv(char *str)
-// {
-//     // size_t    i;
-//     // size_t    len;
+char 	*create_csv(char *str)
+{
+	size_t	j;
+	size_t	len;
+	size_t	i;
+	size_t	k;
+	char 	*temp;
 
-//     // if (!str)
-//     //     return (NULL);
-//     // i = 0;
-//     // len = strlen(str);
-//     // while (str[i] != '\0')
-//     // {
-//     //     if (str[i] == ',')
-//     //     {
-//     //         str[0] = '\"';
-//     //         str[len - 1] = '\"'; //either len or len -1
-//     //     }
-//     //     if (str[i] == '\"')
-//     //         str[i + 1] = '\"';
-//     //     i++;
-//     // }
-//     // return (str);
-//     size_t		j;
-//     size_t		len;
-//     char 		*res;
-
-//     if (!str)
-//     	return (NULL);
-//     j = 0;
-//     len = strlen(str) + (ft_char_count(str, '\"') * 2);
-//     if (ft_char_count(str, ',') > 0)
-//     	len += 2;
-//     res = ft_strnew(len);
-//     while (*str != '\0')
-//     {
-//     	if ((ft_char_count(str, ',') > 0) && (j == 0))
-//     		res[j] = '\"';
-
-//     }
-
-// }
+	i = 0;
+	if ((ft_char_count(str, ',')) > 0)
+		i += 2;
+	j = (ft_char_count(str, '\"')) + (strlen(str));
+	len  = i + j;
+	k = 0;
+	if (!(temp = ft_strnew(len)))
+		return (NULL);
+	if (i > 0)
+	{
+		k++;
+		temp[0] = '\"';
+	}
+	while (*str)
+	{
+		if (*str == '\"')
+		{
+			temp[k] = '\"';
+			temp[k + 1] = '\"';
+			k++;
+		}
+		temp[k] = *str;
+		k++;
+		str++;
+	}
+	if (i > 0)
+		temp[len - 1] = '\"';
+	temp[len] = '\0';
+	return (temp);
+}
 
 char	*csv_std(char *str)
 {
@@ -62,7 +60,7 @@ char	*csv_std(char *str)
 	j = 0;
 	i = strlen(str);
 	res = ft_strnew(i);
-	while (*str != '\0')
+	while (*str++ != '\0')
 	{
 		if ((ft_char_count(str, ',') > 0) && (j == 0))
 		{
@@ -79,9 +77,7 @@ char	*csv_std(char *str)
 		if ((*str == '\"') && (*(str + 1) == '\"'))
 			if (i == -1)
 				str++;
-		res[j] = *str;
-		j++;
-		str++;
+		res[j++] = *str;
 	}
 	return (res);
 }
