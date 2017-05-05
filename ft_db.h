@@ -21,8 +21,6 @@
 # include <sys/types.h>
 # include <dirent.h>
 
-t_list	*ft_lstnew(void const *content, size_t content_size);
-void	ft_print_list(t_list *lst);
 t_list	*get_attr(void);
 int		main(void);
 int		ft_lstsize(t_list *lst);

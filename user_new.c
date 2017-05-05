@@ -30,8 +30,10 @@ t_list	*get_attr(void) //gets initial attributes from user
 		get_next_line(0, &str);
 		if ((strcmp(str, "finished") == 0) || (strlen(str) == 0))
 			break ;
-		curr->next = ft_lstnew(str, sizeof(str));
+		// printf("\nbefore lstnew value is: %s\n", str);
+		curr->next = ft_lstnew(str, strlen(str));
 		curr = curr->next;
+		// printf("\nafter lstnew value is: %s\n", curr->content);
 		free(str);
 		i++;
 	}

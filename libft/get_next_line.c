@@ -12,53 +12,74 @@
 
 #include "includes/libft.h"
 
-int		send_help(char **buf_keep, char **line)
+static char		*ft_until_next(char *str)
 {
-	char	*temp;
-	size_t	len;
+	int		i;
+	int		j;
+	char	*res;
 
-	if (ft_strlen(*buf_keep))
+	i = 0;
+	j = 0;
+	while ((str[i] != '\n') && (str[i] != '\0'))
+		i++;
+	if (str[i] == '\0')
+		return (str);
+	else
 	{
-		len = ft_wdlen(*buf_keep, '\n');
-		if (ft_strchr(*buf_keep, '\n'))
+		res = ft_strnew(i + 1);
+		while (j < i)
 		{
-			*line = ft_strsub(*buf_keep, 0, len);
-			temp = ft_strdup(*buf_keep + len + 1);
-			free(*buf_keep);
-			*buf_keep = temp;
-			return (1);
+			res[j] = str[j];
+			j++;
 		}
-		*line = ft_strdup(*buf_keep);
-		free(*buf_keep);
-		*buf_keep = NULL;
-		return (1);
+		res[j] = '\0';
+		return (res);
 	}
-	return (0);
 }
 
-int		get_next_line(const int fd, char **line)
+static int		ft_read_into(const int fd, char **s1)
 {
-	static	char	*buf_keep;
-	char			buff[BUFF_SIZE + 1];
-	int				byte_count;
-	char			*tmp;
+	int		ret;
+	char	buf[BUFF_SIZE + 1];
+	char	*tmp;
 
-	if (fd < 0 || !line || read(fd, buff, 0) < 0)
-		return (-1);
-	while ((byte_count = read(fd, buff, BUFF_SIZE)) > 0)
+	if ((ret = read(fd, buf, BUFF_SIZE)) <= 0)
+		return (ret);
+	buf[ret] = '\0';
+	tmp = ft_strdup(*s1);
+	*s1 = ft_strnew((ft_strlen(tmp) + ft_strlen(buf)));
+	ft_strcat(*s1, tmp);
+	ft_strcat(*s1, buf);
+	ft_strdel(&tmp);
+	ft_strclr(buf);
+	return (ret);
+}
+
+int				get_next_line(const int fd, char **line)
+{
+	int				ret;
+	static char		*s1;
+	int				i;
+
+	i = 0;
+	if (!s1)
+		s1 = ft_strnew(1);
+	while (ft_strchr(s1, '\n') == 0)
 	{
-		buff[byte_count] = '\0';
-		if (!buf_keep)
-			buf_keep = ft_strnew(0);
-		tmp = ft_strjoin(buf_keep, buff);
-		free(buf_keep);
-		buf_keep = tmp;
-		if (ft_strchr(buff, '\n'))
+		if ((ret = ft_read_into(fd, &s1)) <= 0)
 			break ;
+		i++;
 	}
-	if (buf_keep == NULL)
+	if ((ret < 0) || (!line))
+		return (-1);
+	*line = ft_until_next(s1);
+	s1 = ft_strchr(s1, '\n');
+	if (s1)
+	{
+		s1++;
+		i++;
+	}
+	if (((ret == 0) && (i == 0)) && (ft_strlen(*line) <= 0))
 		return (0);
-	if (send_help(&buf_keep, line))
-		return (1);
-	return (0);
+	return (1);
 }

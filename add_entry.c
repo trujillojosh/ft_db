@@ -27,7 +27,7 @@ t_list	*new_entry_field(t_list	*attr, int id)
 	{
 		printf("\nPlease enter value for %s then press enter.\n", attr->content);
 		get_next_line(0, &tmp);
-		res->next = ft_lstnew(tmp, sizeof(tmp));
+		res->next = ft_lstnew(tmp, strlen(tmp));
 		res = res->next;
 		attr = attr->next;
 		free(tmp);
