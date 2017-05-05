@@ -61,6 +61,11 @@ int		main(void)
 	{
 		attr = curr_saves();
 		data = read_csv(save_options(attr));
+		if (data == NULL)
+		{
+			printf("\n%s", "File is either corrupted or does not exist");
+			return (-1);
+		}
 		attr = read_attr(NULL, 1);
 		// printf("\n%s", save_options(attr));
 		// data = read_csv(save_options(attr));

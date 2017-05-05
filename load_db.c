@@ -136,6 +136,8 @@ char	***read_csv(char *save)
 	FILE	*fp;
 
 	fp = fopen(save, "r");
+	if (fp == NULL)
+		return (NULL);
 	attr = read_attr(fp, 0);
 	data = file_data(fp, attr);
 	fclose(fp);
