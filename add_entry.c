@@ -52,6 +52,5 @@ char	***add_entry(t_list *attr, char ***data)
 		entry = entry->next;
 		i++;
 	}
-	print_entry(j, data, attr);
 	return (data);
 }
