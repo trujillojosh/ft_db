@@ -43,5 +43,9 @@ t_list	*split_csv(char *str);
 t_list	*read_attr(FILE *fp, int mode);
 t_list 	*new_entry_field(t_list *attr, int id);
 char	***add_entry(t_list *attr, char ***data);
+int 	search_db(t_list *attr, char ***data);
+void	print_entry_line(int choice, int j, char ***data, t_list *attr);
+int 	attr_option(t_list *attr);
+int 	make_selection(t_list *res, char ***data, t_list *attr);
 
 #endif

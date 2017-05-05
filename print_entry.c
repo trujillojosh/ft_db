@@ -26,3 +26,21 @@ void	print_entry(int j, char ***data, t_list *attr)
 		attr = attr->next;
 	}
 }
+
+void	print_entry_line(int choice, int j, char ***data, t_list *attr)
+{
+	int 	i;
+	int 	k;
+
+	i = 0;
+	k = ft_lstsize(attr);
+	printf("\n[%d]", choice);
+	while (i < k)
+	{
+		printf(" %s: %s", attr->content, data[i][j]);
+		if ((i + 1) < k)
+			printf("%c", ',');
+		i++;
+		attr = attr->next;
+	}
+}

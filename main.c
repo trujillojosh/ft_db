@@ -79,6 +79,11 @@ int		main(void)
 		menu = db_menu();
 		if (menu == 1)
 			add_entry(attr, data);
+		else if (menu == 2)
+		{
+			opt = search_db(attr, data);
+			printf("\noption is -> %d\n", opt);
+		}
 		else if (menu == 3)
 			save_db(attr, data);
 	}
