@@ -51,5 +51,8 @@ int 	attr_select(t_list *attr);
 char 	***delete_entry(t_list *attr, char ***data, int entry);
 char 	***modify_entry(t_list *attr, char ***data, int entry);
 char	***manage_entry(t_list *attr, char ***data, int entry);
+char 	*create_csv(char *str);
+void	free_copy(char ***strdup_copy, t_list *attr, int size);
+char	***strdup_db(t_list *attr, char ***data);
 
 #endif

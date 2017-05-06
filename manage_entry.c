@@ -28,7 +28,7 @@ int		attr_select(t_list *attr)
 		attr = attr->next;
 	}
 	get_next_line(0, &tmp);
-	i = ft_atoi(tmp) - 1;
+	i = atoi(tmp) - 1;
 	free(tmp);
 	if (i >= ft_lstsize(head))
 		return (-1);
@@ -80,9 +80,22 @@ char	***modify_entry(t_list *attr, char ***data, int entry)
 	char	*tmp;
 	
 	choice = attr_select(attr);
+	printf("\n\nchoice is --> %d\n\n", choice);
+	if (choice == 0)
+	{
+		printf("\nCannot modify ID Value");
+		return (data);
+	}
+	if (choice < 0)
+	{
+		return (data);
+	}
 	printf("\nWhat would you like to change the value to?\n");
 	get_next_line(0, &tmp);
+	printf("\n\ntmp is --> %s\n\n", tmp);
+	printf("\n\nchoice is %d\nentry is %d\ndata is %s\n\n", choice, entry, data[choice][entry]);
 	data[choice][entry] = tmp;
+	printf("\n\nchoice after is %d\nentry is %d\ndata is %s\n\n", choice, entry, data[choice][entry]);
 	free(tmp);
 	return (data);
 }

@@ -35,26 +35,43 @@ int		attr_option(t_list *attr)
 	return (i);
 }
 
+int 	selection_index(t_list *res, int choice)
+{
+	if (choice >= ft_lstsize(res))
+		return (-1);
+	while (choice > 0)
+	{
+		res = res->next;
+		choice--;
+	}
+	return (atoi(res->content));
+}
+
 int		make_selection(t_list *res, char ***data, t_list *attr)
 {
 	int 	choice;
 	int		tmp;
 	char	*tmp2;
+	t_list	*head;
 	
 	choice = 1;
 	tmp = 0;
+	head = res;
 	printf("\nPlease select which result you would like to access.");
 	while (res)
 	{
 		tmp = atoi(res->content);
 		print_entry_line(choice, tmp, data, attr);
 		res = res->next;
+		choice++;
 	}
 	printf("%c", '\n');
 	get_next_line(0, &tmp2);
 	tmp = atoi(tmp2);
 	free(tmp2);
 	tmp--;
+	tmp = selection_index(head, tmp);
+	printf("\n\ntmp is --> %d\n\n", tmp);
 	return (tmp);
 }
 

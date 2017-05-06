@@ -43,7 +43,8 @@ int		db_menu(void)
 
 int		main(void)
 {
-	static char	***data;
+	char		***data;
+	char 		***tmp;
 	t_list		*attr;
 	t_list		*help;
 	int			opt;
@@ -82,7 +83,12 @@ int		main(void)
 		else if (menu == 2)
 		{
 			opt = search_db(attr, data);
-			data = manage_entry(attr, data, opt);
+			if (opt >= 0)
+			{
+				tmp = strdup_db(attr, data);
+				free(data);
+				data = manage_entry(attr, tmp, opt);
+			}
 		}
 		else if (menu == 3)
 			save_db(attr, data);

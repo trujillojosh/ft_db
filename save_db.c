@@ -31,7 +31,7 @@ void	save_data(FILE *fp, t_list *attr, char ***data)
 	int		j;
 	t_list	*head;
 
-	// i = 0; made i = -1 down below 
+	i = 0;
 	j = 0;
 	head = attr;
 	while (attr)
@@ -45,13 +45,13 @@ void	save_data(FILE *fp, t_list *attr, char ***data)
 	fprintf(fp, "%c", '\n');
 	while (data[0][j] != NULL)
 	{
-		i = -1; //since we dont use it until now we can initialize to -1 and do ++1 to save lines
-		while (++i < ft_lstsize(attr))
+		// i = -1; //since we dont use it until now we can initialize to -1 and do ++1 to save lines
+		while (i < ft_lstsize(attr))
 		{
-			fprintf(fp, "%s", data[i][j]);
+			fprintf(fp, "%s", create_csv(data[i][j]));
 			if ((i + 1) < ft_lstsize(attr))
 				fprintf(fp, "%c", ',');
-			// i++;
+			i++;
 		}
 		j++;
 		fprintf(fp, "%c", '\n');

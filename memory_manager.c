@@ -12,7 +12,7 @@
 
 #include "ft_db.h"
 
-char	***strdup_db(t_list *attr, char ***data, int s)
+char	***strdup_db(t_list *attr, char ***data)
 {
 	char	***temp;
 	size_t	i;
@@ -21,7 +21,7 @@ char	***strdup_db(t_list *attr, char ***data, int s)
 	temp = create_db(ft_lstsize(attr), attr);
 	i = -1;
 	j = -1;
-	while (++j < s)
+	while (data[0][++j] != NULL)
 	{
 		i = -1;
 		while (++i < ft_lstsize(attr))
@@ -30,7 +30,7 @@ char	***strdup_db(t_list *attr, char ***data, int s)
 	return (temp);
 }
 
-static	void	free_copy(char ***strdup_copy, t_list *attr, int size)
+void	free_copy(char ***strdup_copy, t_list *attr, int size)
 {
 	size_t	i;
 	size_t	j;
