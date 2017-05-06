@@ -33,43 +33,65 @@ char 	*create_csv(char *str)
 	return (ret);
 }
 
+static void		help_split(char **str, int mode)
+{
+	if (mode == 0)
+	{
+		while ((**str != ',') && (**str != '\0'))
+			(*str)++;
+	}
+	else
+	{
+		while ((**str != '\"') && (**str != '\0'))
+			(*str)++;
+		if (**str == '\"')
+			(*str)++;
+	}
+	if (**str == ',')
+		(*str)++;
+}
+
+static char 	*help_split2(char **str, int mode)
+{
+	int 	i;
+	char 	*tmp;
+
+	i = 0;
+	if (mode == 0)
+		i = ft_until(*str, ',');
+	else
+	{
+		if (strlen(*str) <= 1)
+			return (NULL);
+		(*str)++;
+		i = ft_until(*str, '\"');
+	}
+	tmp = ft_strnew(i);
+	tmp = strncpy(tmp, *str, i);
+	return (tmp);
+}
+
 t_list *split_csv(char *str)
 {
 	t_list	*head;
 	t_list	*curr;
 	char 	*tmp;
-	int 	i;
-	int 	j;
 
-	i = 0;
-	j = 0;
 	curr = ft_lstnew(str, strlen(str));
 	head = curr;
 	while (*str != '\0')
 	{
 		if (*str != '\"')
 		{
-			i = ft_until(str, ',');
-			tmp = ft_strnew(i);
-			tmp = strncpy(tmp, str, i);
-			while ((*str != ',') && (*str != '\0'))
-				str++;
+			tmp = help_split2(&str, 0);
+			help_split(&str, 0);
 		}
 		else
 		{
-			if (strlen(str) == 1)
+			if (!(tmp = help_split2(&str, 1)))
 				return (NULL);
-			str++;
-			i = ft_until(str, '\"');
-			tmp = ft_strnew(i);
-			tmp = strncpy(tmp, str, i);
-			while ((*str != '\"') && (*str != '\0'))
-				str++;
-			if (*str == '\"')
-				str++;
+			help_split(&str, 1);
 		}
-		if (*str == ',')
-			str++;
 		curr->next = ft_lstnew(tmp, strlen(tmp));
 		free(tmp);
 		curr = curr->next;

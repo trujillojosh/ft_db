@@ -23,11 +23,10 @@
 
 t_list	*get_attr(void);
 int		main(void);
-char	***create_db(int size, t_list *attr);
+char	***create_db(int size, t_list *attr, int k);
 char	***user_populate(int size, t_list *attr);
 char	*fill_data(char *content);
 int		another_entry(void);
-int 	get_option(void);
 char	*new_filename(char *str);
 void	save_db(t_list *attr, char ***data);
 t_list	*curr_saves(void);

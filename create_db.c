@@ -12,7 +12,7 @@
 
 #include "ft_db.h"
 
-char 	***create_db(int size, t_list *attr) //creates 3d array based on list of attributes
+char 	***create_db(int size, t_list *attr, int k)
 {
 	char 	***res;
 	int 	i;
@@ -23,14 +23,14 @@ char 	***create_db(int size, t_list *attr) //creates 3d array based on list of a
 	res = (char ***)malloc(sizeof(char **) * (size + 1));
 	while (attr)
 	{
-		res[i] = (char **)malloc(sizeof(char *) * 1001);
+		res[i] = (char **)malloc(sizeof(char *) * (k + 1));
 		j = 0;
-		while (j < 1000)
+		while (j < k)
 		{
 			res[i][j] = NULL;
 			j++;
 		}
-		res[i][1000] = NULL;
+		res[i][k] = NULL;
 		i++;
 		attr = attr->next;
 	}

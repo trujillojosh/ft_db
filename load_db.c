@@ -104,7 +104,16 @@ char	***file_data(FILE *fp, t_list *attr)
 
 	i = 0;
 	j = 0;
-	res = create_db(ft_lstsize(attr), attr);
+	while (get_next_line(fileno(fp), &tmp))
+	{
+		free(tmp);
+		i++;
+	}
+	res = create_db(ft_lstsize(attr), attr, (i + 250));
+	i = 0;
+	rewind(fp);
+	get_next_line(fileno(fp), &tmp);
+	free(tmp);
 	while (1)
 	{
 		i = 0;
@@ -122,6 +131,7 @@ char	***file_data(FILE *fp, t_list *attr)
 	}
 	return(res);
 }
+
 char	***read_csv(char *save)
 {
 	char	***data;
@@ -132,7 +142,6 @@ char	***read_csv(char *save)
 	if (fp == NULL)
 		return (NULL);
 	attr = read_attr(fp, 0);
-	printf("\n\ndidn't segfault\n\n");
 	data = file_data(fp, attr);
 	fclose(fp);
 	return (data);

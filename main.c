@@ -12,7 +12,7 @@
 
 #include "ft_db.h"
 
-int		get_option(void)
+static int		get_option(void)
 {
 	char	*opt;
 	int		i;
@@ -27,7 +27,7 @@ int		get_option(void)
 	return (i);
 }
 
-int		db_menu(void)
+static int		db_menu(void)
 {
 	char	*opt;
 	int		i;
@@ -41,33 +41,40 @@ int		db_menu(void)
 	return (i);
 }
 
-int		main(void)
+static int init_data(char ****data, t_list **attr)
 {
-	static char		***data;
-	t_list		*attr;
-	t_list		*help;
-	int			opt;
-	int			menu;
+	int 	opt;
 
 	opt = get_option();
-	help = NULL;
 	if (opt == 1)
 	{
-		attr = get_attr();
-		data = user_populate(ft_lstsize(attr), attr);
+		*attr = get_attr();
+		*data = user_populate(ft_lstsize(*attr), *attr);
 	}
 	else if (opt == 2)
 	{
-		attr = curr_saves();
-		data = read_csv(save_options(attr));
-		if (data == NULL)
+		*attr = curr_saves();
+		*data = read_csv(save_options(*attr));
+		if (*data == NULL)
 		{
 			printf("\n%s", "File is either corrupted or does not exist");
 			return (-1);
 		}
-		attr = read_attr(NULL, 1);
+		*attr = read_attr(NULL, 1);
 	}
 	else
+		return (-1);
+	return (1);
+}
+
+int		main(void)
+{
+	static char		***data;
+	t_list		*attr;
+	int			opt;
+	int			menu;
+
+	if (init_data(&data, &attr) < 0)
 		return (-1);
 	while (menu != 4)
 	{

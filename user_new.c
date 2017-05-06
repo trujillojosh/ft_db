@@ -83,7 +83,7 @@ char	***user_populate(int size, t_list *attr) //allows user to create new data i
 
 	id = 0;
 	i = 1;
-	data = create_db(size, attr);
+	data = create_db(size, attr, 250);
 	printf("\n%s\n", "Now let's move on the the first entry.");
 	while (1)
 	{
