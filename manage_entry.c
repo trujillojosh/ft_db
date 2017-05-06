@@ -19,6 +19,7 @@ int		attr_select(t_list *attr)
 	char	*tmp;
 
 	i = 1;
+	attr = attr->next;
 	head = attr;
 	printf("\nWhich attribute would you like to modify?\n");
 	while (attr)
@@ -28,7 +29,7 @@ int		attr_select(t_list *attr)
 		attr = attr->next;
 	}
 	get_next_line(0, &tmp);
-	i = atoi(tmp) - 1;
+	i = atoi(tmp);
 	free(tmp);
 	if (i >= ft_lstsize(head))
 		return (-1);
@@ -74,23 +75,22 @@ void	modify_entry(t_list *attr, char ****data, int entry)
 	char	*tmp;
 	
 	choice = attr_select(attr);
-	printf("\n\nchoice is --> %d\n\n", choice);
-	if (choice == 0)
+	if (choice <= 0)
 	{
-		printf("\nCannot modify ID Value");
-		return ;
-	}
-	if (choice < 0)
-	{
+		printf("\nInvalid option\n");
 		return ;
 	}
 	printf("\nWhat would you like to change the value to?\n");
 	get_next_line(0, &tmp);
-	// printf("\n\ntmp is --> %s\n\n", tmp);
-	// printf("\n\nchoice is %d\nentry is %d\ndata is %s\n\n", choice, entry, (*data)[choice][entry]);
+	if (ft_char_count(tmp, '\"') > 0)
+	{
+		printf("\nQuotation marks are not valid characters, please try again");
+		free(tmp);
+		modify_entry(attr, data, entry);
+		return ;
+	}
 	free((*data)[choice][entry]);
 	(*data)[choice][entry] = strdup(tmp);
-	// printf("\n\nchoice after is %d\nentry is %d\ndata is %s\n\n", choice, entry, (*data)[choice][entry]);
 	free(tmp);
 }
 
@@ -107,9 +107,6 @@ void	manage_entry(t_list *attr, char ****data, int entry)
 	if (i == 2)
 		delete_entry(attr, data, entry);
 	else if (i == 1)
-	{
 		modify_entry(attr, data, entry);
-		printf("\n in manage entry after modify %s\n", (*data)[1][entry]);
-	}
 }
 

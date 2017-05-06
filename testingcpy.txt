@@ -1,6 +1,0 @@
-ID,First,Last
-0,Joshua,Trujillo
-1,John,Smith
-2,Rene,Ramirez
-3,David,Castro-Chew
-4,Robert,Bowden

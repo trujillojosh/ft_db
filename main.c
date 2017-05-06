@@ -51,13 +51,12 @@ int		main(void)
 
 	opt = get_option();
 	help = NULL;
-	if (opt == 1) //create new db
+	if (opt == 1)
 	{
 		attr = get_attr();
 		data = user_populate(ft_lstsize(attr), attr);
-		// print_entry(1, data, attr);
 	}
-	else if (opt == 2)//access an existing one
+	else if (opt == 2)
 	{
 		attr = curr_saves();
 		data = read_csv(save_options(attr));
@@ -67,10 +66,6 @@ int		main(void)
 			return (-1);
 		}
 		attr = read_attr(NULL, 1);
-		// printf("\n%s", save_options(attr));
-		// data = read_csv(save_options(attr));
-		// printf("\noption is --> %s", save_options(attr));
-		// return (0);
 	}
 	else
 		return (-1);
@@ -88,6 +83,5 @@ int		main(void)
 		else if (menu == 3)
 			save_db(attr, data);
 	}
-	// printf("\n%s\n%s\n%s", data[0][1], data[1][1], data[2][1]);
 	return (0);
 }

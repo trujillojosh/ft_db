@@ -15,18 +15,26 @@
 t_list	*new_entry_field(t_list	*attr, int id)
 {
 	t_list	*head;
+	t_list 	*begin;
 	t_list	*res;
 	char	*tmp;
 
 	tmp = ft_itoa(id);
 	res = ft_lstnew(tmp, strlen(tmp));
 	head = res;
+	begin = attr;
 	attr = attr->next;
 	free(tmp);
 	while (attr)
 	{
 		printf("\nPlease enter value for %s then press enter.\n", attr->content);
 		get_next_line(0, &tmp);
+		if (ft_char_count(tmp, '\"') > 0)
+		{
+			printf("\nQuotation Marks are not a valid input, Please try again");
+			free(tmp);
+			return (new_entry_field(attr, id));
+		}
 		res->next = ft_lstnew(tmp, strlen(tmp));
 		res = res->next;
 		attr = attr->next;

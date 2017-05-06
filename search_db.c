@@ -71,7 +71,6 @@ int		make_selection(t_list *res, char ***data, t_list *attr)
 	free(tmp2);
 	tmp--;
 	tmp = selection_index(head, tmp);
-	printf("\n\ntmp is --> %d\n\n", tmp);
 	return (tmp);
 }
 
