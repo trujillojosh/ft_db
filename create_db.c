@@ -6,17 +6,17 @@
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/01 19:49:28 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/05/01 19:49:37 by jtrujill         ###   ########.fr       */
+/*   Updated: 2017/05/05 23:24:02 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_db.h"
 
-char 	***create_db(int size, t_list *attr, int k)
+char	***create_db(int size, t_list *attr, int k)
 {
-	char 	***res;
-	int 	i;
-	int 	j;
+	char	***res;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;

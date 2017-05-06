@@ -6,16 +6,16 @@
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 15:25:58 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/05/05 14:34:27 by dcastro-         ###   ########.fr       */
+/*   Updated: 2017/05/05 23:24:57 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_db.h"
 
-char 	*create_csv(char *str)
+char			*create_csv(char *str)
 {
-	char 	*ret;
-	int 	i;
+	char	*ret;
+	int		i;
 
 	i = 0;
 	if (ft_char_count(str, ',') <= 0)
@@ -33,7 +33,7 @@ char 	*create_csv(char *str)
 	return (ret);
 }
 
-static void		help_split(char **str, int mode)
+static	void	help_split(char **str, int mode)
 {
 	if (mode == 0)
 	{
@@ -51,10 +51,10 @@ static void		help_split(char **str, int mode)
 		(*str)++;
 }
 
-static char 	*help_split2(char **str, int mode)
+static	char	*help_split2(char **str, int mode)
 {
-	int 	i;
-	char 	*tmp;
+	int		i;
+	char	*tmp;
 
 	i = 0;
 	if (mode == 0)
@@ -71,11 +71,11 @@ static char 	*help_split2(char **str, int mode)
 	return (tmp);
 }
 
-t_list *split_csv(char *str)
+t_list			*split_csv(char *str)
 {
 	t_list	*head;
 	t_list	*curr;
-	char 	*tmp;
+	char	*tmp;
 
 	curr = ft_lstnew(str, strlen(str));
 	head = curr;

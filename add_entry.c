@@ -6,16 +6,16 @@
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 17:38:01 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/05/04 18:13:18 by jtrujill         ###   ########.fr       */
+/*   Updated: 2017/05/05 23:23:43 by dcastro-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_db.h"
 
-t_list	*new_entry_field(t_list	*attr, int id)
+t_list	*new_entry_field(t_list *attr, int id)
 {
 	t_list	*head;
-	t_list 	*begin;
+	t_list	*begin;
 	t_list	*res;
 	char	*tmp;
 
