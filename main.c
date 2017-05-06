@@ -43,7 +43,7 @@ int		db_menu(void)
 
 int		main(void)
 {
-	char		***data;
+	static char		***data;
 	t_list		*attr;
 	t_list		*help;
 	int			opt;
