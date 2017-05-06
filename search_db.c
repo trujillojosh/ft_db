@@ -16,7 +16,7 @@ int		attr_option(t_list *attr)
 {
 	int 	i;
 	t_list	*head;
-	char	*tmp;
+	char	*str;
 
 	i = 1;
 	head = attr;
@@ -27,9 +27,9 @@ int		attr_option(t_list *attr)
 		i++;
 		attr = attr->next;
 	}
-	get_next_line(0, &tmp);
-	i = ft_atoi(tmp) - 1;
-	free(tmp);
+	get_next_line(0, &str);
+	i = ft_atoi(str) - 1;
+	free(str);
 	if (i >= ft_lstsize(head))
 		return (-1);
 	return (i);
@@ -91,7 +91,7 @@ int 	search_db(t_list *attr, char ***data)
 	res = head;
 	while (data[search][j] != NULL)
 	{
-		if (strcmp(tmp, data[search][j])== 0)
+		if (strcmp(tmp, data[search][j]) == 0)
 		{
 			res->next = ft_lstnew(ft_itoa(j), strlen(ft_itoa(j)));
 			res = res->next;

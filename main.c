@@ -44,7 +44,6 @@ int		db_menu(void)
 int		main(void)
 {
 	char		***data;
-	char 		***tmp;
 	t_list		*attr;
 	t_list		*help;
 	int			opt;
@@ -84,11 +83,7 @@ int		main(void)
 		{
 			opt = search_db(attr, data);
 			if (opt >= 0)
-			{
-				tmp = strdup_db(attr, data);
-				free(data);
-				data = manage_entry(attr, tmp, opt);
-			}
+				manage_entry(attr, &data, opt);
 		}
 		else if (menu == 3)
 			save_db(attr, data);

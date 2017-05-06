@@ -35,46 +35,40 @@ int		attr_select(t_list *attr)
 	return (i);
 }
 
-char	***delete_entry(t_list *attr, char ***data, int entry)
+void	delete_entry(t_list *attr, char ****data, int entry)
 {
-	char	***res;
 	int 	i;
-	int		j;
+	int 	j;
 	int 	k;
-
-	i = 0;
+	i = 1;
 	j = 0;
 	k = 0;
-	res = create_db(ft_lstsize(attr), attr);
 	while (j < entry)
-	{
-		i = 0;
-		while (i < ft_lstsize(attr))
-		{
-			res[i][j] = data[i][j];
-			i++;
-		}
 		j++;
-	}
 	k = j + 1;
-	while (data[0][k] != NULL)
+	while ((*data)[0][k] != NULL)
 	{
-		i = 0;
+		i = 1;
 		while (i < ft_lstsize(attr))
 		{
-			if (i == 0)
-				res[i][j] = data[i][j];
-			else
-				res[i][j] = data[i][k];
+			free((*data)[i][j]);
+			(*data)[i][j] = strdup((*data)[i][k]);
 			i++;
 		}
 		j++;
 		k++;
 	}
-	return (res);
+	i = 0;
+	k--;
+	while (i < ft_lstsize(attr))
+	{
+		free((*data)[i][k]);
+		(*data)[i][k] = NULL;
+		i++;
+	}
 }
 
-char	***modify_entry(t_list *attr, char ***data, int entry)
+void	modify_entry(t_list *attr, char ****data, int entry)
 {
 	int		choice;
 	char	*tmp;
@@ -84,37 +78,38 @@ char	***modify_entry(t_list *attr, char ***data, int entry)
 	if (choice == 0)
 	{
 		printf("\nCannot modify ID Value");
-		return (data);
+		return ;
 	}
 	if (choice < 0)
 	{
-		return (data);
+		return ;
 	}
 	printf("\nWhat would you like to change the value to?\n");
 	get_next_line(0, &tmp);
-	printf("\n\ntmp is --> %s\n\n", tmp);
-	printf("\n\nchoice is %d\nentry is %d\ndata is %s\n\n", choice, entry, data[choice][entry]);
-	data[choice][entry] = tmp;
-	printf("\n\nchoice after is %d\nentry is %d\ndata is %s\n\n", choice, entry, data[choice][entry]);
+	// printf("\n\ntmp is --> %s\n\n", tmp);
+	// printf("\n\nchoice is %d\nentry is %d\ndata is %s\n\n", choice, entry, (*data)[choice][entry]);
+	free((*data)[choice][entry]);
+	(*data)[choice][entry] = strdup(tmp);
+	// printf("\n\nchoice after is %d\nentry is %d\ndata is %s\n\n", choice, entry, (*data)[choice][entry]);
 	free(tmp);
-	return (data);
 }
 
-char	***manage_entry(t_list *attr, char ***data, int entry)
+void	manage_entry(t_list *attr, char ****data, int entry)
 {
 	int		i;
 	char	*tmp;
-	print_entry(entry, data, attr);
+	print_entry(entry, *data, attr);
 	printf("\nPlease select an option from below\n");
 	printf("[%d] Modify | [%d] Delete | [%d] Return to Main Menu\n", 1, 2, 3);
 	get_next_line(0, &tmp);
 	i = atoi(tmp);
 	free(tmp);
 	if (i == 2)
-		return (delete_entry(attr, data, entry));
+		delete_entry(attr, data, entry);
 	else if (i == 1)
-		return (modify_entry(attr, data, entry));
-	else
-		return (data);
+	{
+		modify_entry(attr, data, entry);
+		printf("\n in manage entry after modify %s\n", (*data)[1][entry]);
+	}
 }
 

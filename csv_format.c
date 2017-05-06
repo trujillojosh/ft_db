@@ -60,7 +60,7 @@ char	*csv_std(char *str)
 	j = 0;
 	i = strlen(str);
 	res = ft_strnew(i);
-	while (*str++ != '\0')
+	while (*str != '\0')
 	{
 		if ((ft_char_count(str, ',') > 0) && (j == 0))
 		{
@@ -78,6 +78,7 @@ char	*csv_std(char *str)
 			if (i == -1)
 				str++;
 		res[j++] = *str;
+		str++;
 	}
 	return (res);
 }
