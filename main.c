@@ -6,13 +6,13 @@
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/01 22:24:41 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/05/01 22:30:04 by jtrujill         ###   ########.fr       */
+/*   Updated: 2017/05/05 23:10:49 by jtrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_db.h"
 
-static int		get_option(void)
+static int	get_option(void)
 {
 	char	*opt;
 	int		i;
@@ -27,7 +27,7 @@ static int		get_option(void)
 	return (i);
 }
 
-static int		db_menu(void)
+static int	db_menu(void)
 {
 	char	*opt;
 	int		i;
@@ -41,9 +41,9 @@ static int		db_menu(void)
 	return (i);
 }
 
-static int init_data(char ****data, t_list **attr)
+static int	init_data(char ****data, t_list **attr)
 {
-	int 	opt;
+	int		opt;
 
 	opt = get_option();
 	if (opt == 1)
@@ -67,13 +67,14 @@ static int init_data(char ****data, t_list **attr)
 	return (1);
 }
 
-int		main(void)
+int			main(void)
 {
-	static char		***data;
+	static char	***data;
 	t_list		*attr;
 	int			opt;
 	int			menu;
 
+	menu = 0;
 	if (init_data(&data, &attr) < 0)
 		return (-1);
 	while (menu != 4)

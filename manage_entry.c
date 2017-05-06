@@ -6,7 +6,7 @@
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/05 14:55:32 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/05/05 15:34:15 by jtrujill         ###   ########.fr       */
+/*   Updated: 2017/05/05 23:08:39 by jtrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		attr_select(t_list *attr)
 {
-	int 	i;
+	int		i;
 	t_list	*head;
 	char	*tmp;
 
@@ -38,9 +38,10 @@ int		attr_select(t_list *attr)
 
 void	delete_entry(t_list *attr, char ****data, int entry)
 {
-	int 	i;
-	int 	j;
-	int 	k;
+	int		i;
+	int		j;
+	int		k;
+
 	i = 1;
 	j = 0;
 	k = 0;
@@ -73,7 +74,7 @@ void	modify_entry(t_list *attr, char ****data, int entry)
 {
 	int		choice;
 	char	*tmp;
-	
+
 	choice = attr_select(attr);
 	if (choice <= 0)
 	{
@@ -98,6 +99,7 @@ void	manage_entry(t_list *attr, char ****data, int entry)
 {
 	int		i;
 	char	*tmp;
+
 	print_entry(entry, *data, attr);
 	printf("\nPlease select an option from below\n");
 	printf("[%d] Modify | [%d] Delete | [%d] Return to Main Menu\n", 1, 2, 3);
@@ -109,4 +111,3 @@ void	manage_entry(t_list *attr, char ****data, int entry)
 	else if (i == 1)
 		modify_entry(attr, data, entry);
 }
-

@@ -6,7 +6,7 @@
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:40:54 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/05/03 17:49:53 by jtrujill         ###   ########.fr       */
+/*   Updated: 2017/05/05 23:06:21 by jtrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	print_entry(int j, char ***data, t_list *attr)
 
 void	print_entry_line(int choice, int j, char ***data, t_list *attr)
 {
-	int 	i;
-	int 	k;
+	int		i;
+	int		k;
 
 	i = 0;
 	k = ft_lstsize(attr);

@@ -6,7 +6,7 @@
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/02 14:18:46 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/05/02 23:09:44 by jtrujill         ###   ########.fr       */
+/*   Updated: 2017/05/05 23:12:08 by jtrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*curr_saves(void)
 	int				i;
 	DIR				*dir;
 	struct dirent	*ep;
-	
+
 	i = 0;
 	dir = opendir("saves");
 	if (dir == NULL)
@@ -73,10 +73,9 @@ char	*save_options(t_list *save)
 t_list	*read_attr(FILE *fp, int mode)
 {
 	static t_list	*head;
-	t_list 	*lst;
-	char	*line;
-	char	*tmp;
-	int		i;
+	t_list			*lst;
+	char			*line;
+	int				i;
 
 	i = 0;
 	if (mode == 1)
@@ -99,8 +98,8 @@ char	***file_data(FILE *fp, t_list *attr)
 	char	***res;
 	t_list	*data;
 	char	*tmp;
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -129,7 +128,7 @@ char	***file_data(FILE *fp, t_list *attr)
 		}
 		j++;
 	}
-	return(res);
+	return (res);
 }
 
 char	***read_csv(char *save)

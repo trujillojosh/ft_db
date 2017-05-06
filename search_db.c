@@ -6,7 +6,7 @@
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/05 14:09:50 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/05/05 14:19:27 by jtrujill         ###   ########.fr       */
+/*   Updated: 2017/05/05 23:05:39 by jtrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		attr_option(t_list *attr)
 {
-	int 	i;
+	int		i;
 	t_list	*head;
 	char	*str;
 
@@ -35,7 +35,7 @@ int		attr_option(t_list *attr)
 	return (i);
 }
 
-int 	selection_index(t_list *res, int choice)
+int		selection_index(t_list *res, int choice)
 {
 	if (choice >= ft_lstsize(res))
 		return (-1);
@@ -49,11 +49,11 @@ int 	selection_index(t_list *res, int choice)
 
 int		make_selection(t_list *res, char ***data, t_list *attr)
 {
-	int 	choice;
+	int		choice;
 	int		tmp;
 	char	*tmp2;
 	t_list	*head;
-	
+
 	choice = 1;
 	tmp = 0;
 	head = res;
@@ -74,7 +74,7 @@ int		make_selection(t_list *res, char ***data, t_list *attr)
 	return (tmp);
 }
 
-int 	search_db(t_list *attr, char ***data)
+int		search_db(t_list *attr, char ***data)
 {
 	int		search;
 	int		j;

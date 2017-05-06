@@ -6,18 +6,18 @@
 /*   By: jtrujill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/01 22:22:26 by jtrujill          #+#    #+#             */
-/*   Updated: 2017/05/01 22:22:33 by jtrujill         ###   ########.fr       */
+/*   Updated: 2017/05/05 23:01:31 by jtrujill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_db.h"
 
-t_list	*get_attr(void) //gets initial attributes from user
+t_list	*get_attr(void)
 {
 	t_list	*head;
 	t_list	*curr;
 	char	*str;
-	int 	i;
+	int		i;
 
 	i = 0;
 	head = ft_lstnew("ID", 3);
@@ -44,7 +44,7 @@ t_list	*get_attr(void) //gets initial attributes from user
 	return (head);
 }
 
-int 	another_entry(void) //if user would like to make another entry
+int		another_entry(void)
 {
 	char	*str;
 
@@ -59,7 +59,7 @@ int 	another_entry(void) //if user would like to make another entry
 	return (0);
 }
 
-char 	*fill_data(char *content) //fills each attribute based on user response
+char	*fill_data(char *content)
 {
 	char	*str;
 
@@ -74,12 +74,12 @@ char 	*fill_data(char *content) //fills each attribute based on user response
 	return (str);
 }
 
-char	***user_populate(int size, t_list *attr) //allows user to create new data inside a new 3d array
+char	***user_populate(int size, t_list *attr)
 {
 	char	***data;
 	t_list	*head;
-	int 	i;
-	int 	id;
+	int		i;
+	int		id;
 
 	id = 0;
 	i = 1;
