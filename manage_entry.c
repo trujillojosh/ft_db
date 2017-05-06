@@ -83,9 +83,9 @@ void	modify_entry(t_list *attr, char ****data, int entry)
 	}
 	printf("\nWhat would you like to change the value to?\n");
 	get_next_line(0, &tmp);
-	if (ft_char_count(tmp, '\"') > 0)
+	if ((ft_char_count(tmp, '\"') > 0) || (ft_char_count(tmp, '\n')))
 	{
-		printf("\nQuotation marks are not valid characters, please try again");
+		printf("\nQuotation marks and newlines are not valid characters, please try again");
 		free(tmp);
 		modify_entry(attr, data, entry);
 		return ;

@@ -28,7 +28,7 @@ SRCS = ft_strcmp.c ft_atoi.c ft_isdigit.c ft_isalpha.c ft_isalnum.c \
 	   ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_print_list.c \
 	   ft_lstsize.c get_next_line.c ft_char_count.c ft_print_hex.c \
 	   ft_itoa_base.c ft_int_len_ext.c ft_uint_len_ext.c \
-	   ft_uitoa_base.c ft_str_replace.c ft_wdlen.c
+	   ft_uitoa_base.c ft_str_replace.c
 
 OBJS = ft_strcmp.o ft_atoi.o ft_isdigit.o ft_isalpha.o ft_isalnum.o \
 	   ft_isascii.o ft_isprint.o ft_putchar.o ft_putstr.o ft_putendl.o \
@@ -45,7 +45,7 @@ OBJS = ft_strcmp.o ft_atoi.o ft_isdigit.o ft_isalpha.o ft_isalnum.o \
 	   ft_lstdel.o ft_lstadd.o ft_lstiter.o ft_lstmap.o ft_print_list.o \
 	   ft_lstsize.o get_next_line.o ft_char_count.o ft_print_hex.o \
 	   ft_itoa_base.o ft_int_len_ext.o ft_uint_len_ext.o \
-	   ft_uitoa_base.o ft_str_replace.o ft_wdlen.o
+	   ft_uitoa_base.o ft_str_replace.o
 
 all: $(NAME)
 

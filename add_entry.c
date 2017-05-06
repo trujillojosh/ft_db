@@ -29,9 +29,9 @@ t_list	*new_entry_field(t_list	*attr, int id)
 	{
 		printf("\nPlease enter value for %s then press enter.\n", attr->content);
 		get_next_line(0, &tmp);
-		if (ft_char_count(tmp, '\"') > 0)
+		if ((ft_char_count(tmp, '\"') > 0) || (ft_char_count(tmp, '\n') > 0))
 		{
-			printf("\nQuotation Marks are not a valid input, Please try again");
+			printf("\nQuotation Marks and newlines are not a valid inputs, Please try again");
 			free(tmp);
 			return (new_entry_field(attr, id));
 		}

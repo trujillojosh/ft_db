@@ -28,10 +28,10 @@ t_list	*get_attr(void)
 	{
 		printf("\n%s\n", "Enter Attribute name below:");
 		get_next_line(0, &str);
-		if (ft_char_count(str, '\"') > 0)
+		if ((ft_char_count(str, '\"') > 0) || (ft_char_count(str, '\n')))
 		{
 			free(str);
-			printf("\nQuotation marks are not a valid character, please try again");
+			printf("\nQuotation marks and newlines are not a valid character, please try again");
 			return (get_attr());
 		}
 		if ((strcmp(str, "finished") == 0) || (strlen(str) == 0))
@@ -65,10 +65,10 @@ char	*fill_data(char *content)
 
 	printf("\nPlease enter value for %s:\n", content);
 	get_next_line(0, &str);
-	if (ft_char_count(str, '\"') > 0)
+	if ((ft_char_count(str, '\"') > 0) || (ft_char_count(str, '\n') > 0))
 	{
 		free(str);
-		printf("\nQuotation marks are not valid characters, please try again");
+		printf("\nQuotation marks and newlines are not valid characters, please try again");
 		return (fill_data(content));
 	}
 	return (str);
